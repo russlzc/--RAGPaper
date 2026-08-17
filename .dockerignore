@@ -58,7 +58,6 @@ tests/
 docs/
 PLAN.md
 CHANGELOG.md
-CONTRIBUTING.md
 *.md.bak
 
 # ── Docker meta itself (kept for clarity, not strictly excluded) ─────────────

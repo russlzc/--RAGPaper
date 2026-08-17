@@ -14,7 +14,7 @@ DeerFlow (**D**eep **E**xploration and **E**fficient **R**esearch **Flow**) is a
 https://github.com/user-attachments/assets/a8bcadc4-e040-4cf2-8fda-dd768b999c18
 
 > [!NOTE]
-> **DeerFlow 2.0 is a ground-up rewrite.** It shares no code with v1. If you're looking for the original Deep Research framework, it's maintained on the [`1.x` branch](https://github.com/bytedance/deer-flow/tree/main-1.x) — contributions there are still welcome. Active development has moved to 2.0.
+> **DeerFlow 2.0 is a ground-up rewrite.** It shares no code with v1. The original Deep Research framework is maintained on the [`1.x` branch](https://github.com/bytedance/deer-flow/tree/main-1.x); active development has moved to 2.0.
 
 ## Official Website
 
@@ -77,7 +77,7 @@ DeerFlow has newly integrated the intelligent search and crawling toolset indepe
   - [⚠️ Security Notice](#️-security-notice)
     - [Improper Deployment May Introduce Security Risks](#improper-deployment-may-introduce-security-risks)
     - [Security Recommendations](#security-recommendations)
-  - [Contributing](#contributing)
+  - [Verification](#verification)
   - [License](#license)
   - [Acknowledgments](#acknowledgments)
     - [Key Contributors](#key-contributors)
@@ -234,7 +234,7 @@ Docker builds use the upstream `uv` registry by default. If you need faster mirr
 Backend processes automatically pick up `config.yaml` changes on the next config access, so model metadata updates do not require a manual restart during development.
 
 > [!TIP]
-> On Linux, if Docker-based commands fail with `permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock`, add your user to the `docker` group and re-login before retrying. See [CONTRIBUTING.md](CONTRIBUTING.md#linux-docker-daemon-permission-denied) for the full fix.
+> On Linux, if Docker-based commands fail with `permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock`, add your user to the `docker` group and re-login before retrying.
 
 **Production** (builds images locally, mounts runtime config and data):
 
@@ -249,8 +249,6 @@ The unified nginx endpoint is same-origin by default and does not emit browser C
 
 > [!IMPORTANT]
 > The Gateway holds run state (RunManager and the stream bridge) in process, so production defaults to a single Gateway worker (`GATEWAY_WORKERS=1`). Raising the worker count without a shared cross-worker stream bridge — which is not yet available — breaks run cancellation, SSE reconnects, request de-duplication, and IM channels, because nginx uses no sticky sessions and each worker keeps its own run state. Scale a single worker up with more CPU/RAM (or move the database and sandbox onto dedicated tiers) instead of raising `GATEWAY_WORKERS`.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed Docker development guide.
 
 #### Option 2: Local Development
 
@@ -719,7 +717,6 @@ All dict-returning methods are validated against Gateway Pydantic response model
 
 ## Documentation
 
-- [Contributing Guide](CONTRIBUTING.md) - Development environment setup and workflow
 - [Configuration Guide](backend/docs/CONFIGURATION.md) - Setup and configuration instructions
 - [Architecture Overview](backend/CLAUDE.md) - Technical architecture details
 - [Backend Architecture](backend/README.md) - Backend architecture and API reference
@@ -742,9 +739,7 @@ DeerFlow has key high-privilege capabilities including **system command executio
 - **Network isolation**: Where possible, place the agent and trusted devices in the **same dedicated VLAN**, isolated from other network devices.
 - **Stay updated**: Continue to follow DeerFlow's security feature updates.
 
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, workflow, and guidelines.
+## Verification
 
 Regression coverage includes Docker sandbox mode detection and provisioner kubeconfig-path handling tests in `backend/tests/`.
 Backend blocking-IO diagnostics are available from the repository root with

@@ -14,7 +14,7 @@ DeerFlow（**D**eep **E**xploration and **E**fficient **R**esearch **Flow**）�
 https://github.com/user-attachments/assets/a8bcadc4-e040-4cf2-8fda-dd768b999c18
 
 > [!NOTE]
-> **DeerFlow 2.0 是一次彻底重写。** 它和 v1 没有共用代码。如果你要找的是最初的 Deep Research 框架，可以前往 [`1.x` 分支](https://github.com/bytedance/deer-flow/tree/main-1.x)。那里仍然欢迎贡献；当前的主要开发已经转向 2.0。
+> **DeerFlow 2.0 是一次彻底重写。** 它和 v1 没有共用代码。最初的 Deep Research 框架保留在 [`1.x` 分支](https://github.com/bytedance/deer-flow/tree/main-1.x)，当前的主要开发已经转向 2.0。
 
 ## 官网
 
@@ -60,7 +60,7 @@ https://github.com/user-attachments/assets/a8bcadc4-e040-4cf2-8fda-dd768b999c18
   - [内嵌 Python Client](#内嵌-python-client)
   - [文档](#文档)
   - [⚠️ 安全使用](#️-安全使用)
-  - [参与贡献](#参与贡献)
+  - [验证](#验证)
   - [许可证](#许可证)
   - [致谢](#致谢)
     - [核心贡献者](#核心贡献者)
@@ -187,8 +187,6 @@ make down   # 停止并移除容器
 > 当前 Agent 运行时嵌入在 Gateway 中运行，`/api/langgraph/*` 会由 nginx 重写到 Gateway 的 LangGraph-compatible API。
 
 访问地址：http://localhost:2026
-
-更完整的 Docker 开发说明见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 #### 方式二：本地开发
 
@@ -548,7 +546,6 @@ client.upload_files("thread-1", ["./report.pdf"])  # {"success": True, "files": 
 
 ## 文档
 
-- [贡献指南](CONTRIBUTING.md) - 开发环境搭建与协作流程
 - [配置指南](backend/docs/CONFIGURATION.md) - 安装与配置说明
 - [架构概览](backend/CLAUDE.md) - 技术架构说明
 - [后端架构](backend/README.md) - 后端架构与 API 参考
@@ -571,9 +568,7 @@ DeerFlow 具备**系统指令执行、资源操作、业务逻辑调用**等关�
 - **网络隔离**：若有可能，建议将 agent 和可信设备划分到**同一个专用 VLAN**，与其他网络设备做隔离。
 - **持续关注项目更新**：请持续关注 DeerFlow 项目的安全功能更新。
 
-## 参与贡献
-
-欢迎参与贡献。开发环境、工作流和相关规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+## 验证
 
 目前回归测试已经覆盖 Docker sandbox 模式识别，以及 `backend/tests/` 中 provisioner kubeconfig-path 处理相关测试。
 

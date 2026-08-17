@@ -14,7 +14,7 @@ DeerFlow (**D**eep **E**xploration and **E**fficient **R**esearch **Flow**) est 
 https://github.com/user-attachments/assets/a8bcadc4-e040-4cf2-8fda-dd768b999c18
 
 > [!NOTE]
-> **DeerFlow 2.0 est une réécriture complète.** Il ne partage aucun code avec la v1. Si vous cherchez le framework Deep Research original, il est maintenu sur la [branche `1.x`](https://github.com/bytedance/deer-flow/tree/main-1.x) — les contributions y sont toujours les bienvenues. Le développement actif a migré vers la 2.0.
+> **DeerFlow 2.0 est une réécriture complète.** Il ne partage aucun code avec la v1. Le framework Deep Research original est conservé sur la [branche `1.x`](https://github.com/bytedance/deer-flow/tree/main-1.x), tandis que le développement actif a migré vers la 2.0.
 
 ## Site officiel
 
@@ -71,7 +71,7 @@ DeerFlow intègre désormais le toolkit de recherche et de crawling intelligent 
   - [Client Python intégré](#client-python-intégré)
   - [Documentation](#documentation)
   - [⚠️ Avertissement de sécurité](#️-avertissement-de-sécurité)
-  - [Contribuer](#contribuer)
+  - [Vérification](#vérification)
   - [Licence](#licence)
   - [Remerciements](#remerciements)
     - [Contributeurs principaux](#contributeurs-principaux)
@@ -218,7 +218,7 @@ make docker-start   # Start services (auto-detects sandbox mode from config.yaml
 Les processus backend récupèrent automatiquement les changements dans `config.yaml` au prochain accès à la configuration, donc les mises à jour de métadonnées des modèles ne nécessitent pas de redémarrage manuel en développement.
 
 > [!TIP]
-> Sous Linux, si les commandes Docker échouent avec `permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock`, ajoutez votre utilisateur au groupe `docker` et reconnectez-vous avant de réessayer. Voir [CONTRIBUTING.md](CONTRIBUTING.md#linux-docker-daemon-permission-denied) pour la solution complète.
+> Sous Linux, si les commandes Docker échouent avec `permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock`, ajoutez votre utilisateur au groupe `docker` et reconnectez-vous avant de réessayer.
 
 **Production** (build des images en local, montage de la config et des données) :
 
@@ -231,8 +231,6 @@ make down   # Stop and remove containers
 > Le runtime d'agent s'exécute actuellement dans la Gateway. nginx réécrit `/api/langgraph/*` vers l'API compatible LangGraph servie par la Gateway.
 
 Accès : http://localhost:2026
-
-Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour le guide complet de développement avec Docker.
 
 #### Option 2 : Développement local
 
@@ -571,7 +569,6 @@ Toutes les méthodes retournant des dicts sont validées en CI contre les modèl
 
 ## Documentation
 
-- [Guide de contribution](CONTRIBUTING.md) - Mise en place de l'environnement de développement et workflow
 - [Guide de configuration](backend/docs/CONFIGURATION.md) - Instructions d'installation et de configuration
 - [Vue d'ensemble de l'architecture](backend/CLAUDE.md) - Détails de l'architecture technique
 - [Architecture backend](backend/README.md) - Architecture backend et référence API
@@ -594,9 +591,7 @@ DeerFlow dispose de capacités clés à hauts privilèges, notamment **l'exécut
 - **Isolation réseau** : si possible, placez l'agent et les appareils de confiance dans le **même VLAN dédié**, isolé des autres équipements réseau.
 - **Restez informé** : continuez à suivre les mises à jour de sécurité du projet DeerFlow.
 
-## Contribuer
-
-Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md) pour la mise en place de l'environnement de développement, le workflow et les conventions.
+## Vérification
 
 La couverture de tests de régression inclut la détection du mode sandbox Docker et les tests de gestion du kubeconfig-path du provisioner dans `backend/tests/`.
 

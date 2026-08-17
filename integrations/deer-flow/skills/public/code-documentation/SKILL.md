@@ -148,10 +148,6 @@ Every project needs a README. Follow this structure:
 
 [How to build the project]
 
-## Contributing
-
-[Contribution guidelines or link to CONTRIBUTING.md]
-
 ## License
 
 [License information]

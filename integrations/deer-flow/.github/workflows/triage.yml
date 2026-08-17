@@ -9,8 +9,8 @@ name: Triage
 #     or executed, so pull_request_target is safe here.
 #   * Each job only reconciles labels in namespaces IT owns
 #     (area:* / size/* / risk:* / needs-validation). It never touches labels
-#     applied by maintainers or other tools (bug, priority, etc.). first-time-
-#     contributor and reviewing are add-only.
+#     applied by maintainers or other tools (bug, priority, etc.). reviewing is
+#     add-only.
 #   * State is read LIVE (listFiles + listLabelsOnIssue) at run time, not from
 #     the (stale) event payload, so rapid synchronize events converge instead
 #     of thrashing.
@@ -29,7 +29,7 @@ permissions:
   issues: write
 
 jobs:
-  # ── PR: area / size / risk / needs-validation / first-time ─────────────────
+  # ── PR: area / size / risk / needs-validation ──────────────────────────────
   pr-labels:
     if: github.event_name == 'pull_request_target' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
@@ -115,14 +115,6 @@ jobs:
 
             const toRemove = current.filter(n => owned(n) && !desired.has(n));
             const toAdd = [...desired].filter(n => !current.includes(n));
-
-            // first-time-contributor: add-only, on opened, real users only.
-            if (context.payload.action === 'opened' &&
-                pr.user.type === 'User' &&
-                ['FIRST_TIME_CONTRIBUTOR', 'FIRST_TIMER'].includes(pr.author_association) &&
-                !current.includes('first-time-contributor')) {
-              toAdd.push('first-time-contributor');
-            }
 
             for (const name of toRemove) {
               try {

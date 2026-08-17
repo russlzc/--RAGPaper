@@ -422,7 +422,3 @@ reachability.
 ## License
 
 See the [LICENSE](../LICENSE) file in the project root.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.

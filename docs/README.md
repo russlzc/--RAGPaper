@@ -1,6 +1,6 @@
 # docs/
 
-> 文档地图。所有里程碑历史在 [`STATUS.md`](./STATUS.md)，路线图见 [GitHub Issues](https://github.com/russlzc/--RAGPaper/issues)。
+> 文档地图。里程碑记录与当前状态见 [`STATUS.md`](./STATUS.md)。
 
 | 文档 | 适合谁 |
 |---|---|
